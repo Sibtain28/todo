@@ -41,7 +41,6 @@ const updateTask = async (req, res) => {
         const { title, description, status, priority } = req.body;
         const userId = req.user.id;
 
-        // Verify ownership
         const existingTask = await prisma.task.findUnique({ where: { id: parseInt(id) } });
         if (!existingTask || existingTask.userId !== userId) {
             return res.status(403).json({ message: 'Unauthorized or Task not found' });
@@ -67,7 +66,6 @@ const deleteTask = async (req, res) => {
         const { id } = req.params;
         const userId = req.user.id;
 
-        // Verify ownership
         const existingTask = await prisma.task.findUnique({ where: { id: parseInt(id) } });
         if (!existingTask || existingTask.userId !== userId) {
             return res.status(403).json({ message: 'Unauthorized or Task not found' });

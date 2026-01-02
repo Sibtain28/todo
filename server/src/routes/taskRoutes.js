@@ -4,7 +4,7 @@ const { authenticateToken } = require('../middleware/authMiddleware');
 
 const router = express.Router();
 
-router.use(authenticateToken); // Protect all task routes
+router.use(authenticateToken);
 
 router.get('/', getTasks);
 router.post('/', createTask);

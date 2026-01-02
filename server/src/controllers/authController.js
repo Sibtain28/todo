@@ -19,7 +19,6 @@ const register = async (req, res) => {
 
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        // Default to USER if role is not provided or invalid, unless specifically 'ADMIN'
         const assignedRole = role === 'ADMIN' ? 'ADMIN' : 'USER';
 
         const user = await prisma.user.create({

@@ -32,7 +32,6 @@ export const AuthProvider = ({ children }) => {
     const register = async (name, email, password) => {
         try {
             await api.post('/auth/register', { name, email, password });
-            // Auto login after register? Or just return success
             return await login(email, password);
         } catch (error) {
             return { success: false, message: error.response?.data?.message || 'Registration failed' };
